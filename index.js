@@ -43,7 +43,7 @@ const { clear, debug } = flags;
   console.log(`\nCommitting...\n`);
   // run git add  command
   const add = require("child_process").execSync(
-	`git add . && git commit -m "${flags.message}"`
+	`git add . && git commit -m "${flags.message} "`
 	  );
 
   // run git commit command
