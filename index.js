@@ -32,16 +32,9 @@ const { clear, debug } = flags;
   const add = require("child_process").execSync(
     `git add . && git commit -m "${flags.message} "`
   );
-
-  // run git commit command
-  //   const commit = require("child_process").spawn("git", [
-  //     "commit",
-  //     "-m",
-  //     flags.message,
-  //   ]);
-  //   commit.stdout.on("data", (data) => {
-  //     console.log(data.toString());
-  //   });
+  console.log(add.toString());
+  
+ 
   console.log(`\nCommitted!\n`);
 
   debug && log(flags);
