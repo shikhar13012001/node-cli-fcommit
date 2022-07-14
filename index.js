@@ -57,7 +57,7 @@ const commit = require("./utils/commit");
       alert({
         type: `warning`,
         name: `warning`,
-        msg: `${err.message}`,
+        msg: `${"Nothing to commit"}`,
       });
     }
 	else{
