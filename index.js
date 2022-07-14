@@ -59,7 +59,7 @@ const commit = require("./utils/commit");
       msg: `${err.message}`,
 
     });
-	console.log(err);
+	console.log(err.output.toString());
 	return;
   }
 
