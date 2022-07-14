@@ -16,7 +16,15 @@ const input = cli.input;
 const flags = cli.flags;
 const { clear, debug } = flags;
 const commit = require("./utils/commit");
-
+  process.on("unhandledRejection", (err) => {
+    alert({
+      type: `error`,
+      name: `ERROR`,
+      msg: `${err.message}`,
+    });
+    // exit process
+    process.exit(1);
+  });
 (async () => {
   init({ clear });
   input.includes(`help`) && cli.showHelp(0);
@@ -37,15 +45,7 @@ const commit = require("./utils/commit");
     type: flags.branch ? `green` : `yellow`,
   });
   log({ msg: `\nCommitting...\n`, type: `blue` });
-  process.on("unhandledRejection", (err) => {
-    alert({
-      type: `error`,
-      name: `ERROR`,
-      msg: `${err.message}`,
-    });
-    // exit process
-    process.exit(1);
-  });
+
   // run git add  command
   const add = require("child_process").execSync(commit(flags));
   // handle unhandled promise rejections
