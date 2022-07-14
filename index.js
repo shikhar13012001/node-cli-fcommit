@@ -21,10 +21,17 @@ const commit = require("./utils/commit");
   init({ clear });
   input.includes(`help`) && cli.showHelp(0);
   input.includes(`version`) && cli.showVersion(0);
+  // get branch
+  const currbranch = require("child_process").execSync(
+	`git branch | grep "*" | cut -d " " -f 2`
+  )
+ console.log(currbranch.toString());
+
   const { message, branch } = flags;
   if (!isSafe({ message })) {
     return;
   }
+  
 
   log({ msg: `\nCommit message: ${flags.message}\n`, type: `green` });
   log({
