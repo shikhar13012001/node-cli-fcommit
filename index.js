@@ -57,7 +57,10 @@ const commit = require("./utils/commit");
       type: `error`,
       name: `ERROR`,
       msg: `${err.message}`,
+
     });
+	console.log(err);
+	return;
   }
 
   // check if there is any error
