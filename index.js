@@ -15,7 +15,7 @@ const isSafe = require("./utils/error");
 const input = cli.input;
 const flags = cli.flags;
 const { clear, debug } = flags;
-
+const commit = require("./utils/commit");
 (async () => {
   init({ clear });
   input.includes(`help`) && cli.showHelp(0);
@@ -24,55 +24,29 @@ const { clear, debug } = flags;
   if (!isSafe({ message })) {
     return;
   }
-  
-
-
 
   console.log(`\nCommit message: ${flags.message}\n`);
   console.log(`\nBranch name: ${flags.branch}\n`);
   console.log(`\nCommitting...\n`);
-  const commit = () => {
-    if (flags.push) {
-      if (flags.upstream) {
-        alert({
-          type: `info`,
-          name: `INFO`,
-          msg: `Pushing upstream to remote...`,
-        });
-        return `git add . && git commit -m "${flags.message}" && git push -u origin ${flags.branch}`;
-      }
-      alert({ type: `info`, name: `INFO`, msg: `Pushing to remote...` });
-      return `git add . && git commit -m "${flags.message}" && git push origin ${flags.branch}`;
-    }
-	  alert({
-      type: `info`,
-      name: `INFO`,
-      msg: `Committing changes ...`,
-    });
-    return `git add . && git commit -m "${flags.message}"`;
-  };
 
   // run git add  command
-  const add = require("child_process").execSync(commit());
+  const add = require("child_process").execSync(commit(flags));
   console.log(add.toString());
   // check if there is any error
   if (add.error) {
-	alert({
-		type: `error`,
-		name: `ERROR`,
-		msg: `Something went wrong. Please check the error message.`,
-	});
-	return;
-	  }
-	  else
-	  {
-		alert({
-			type: `success`,
-			name: `SUCCESS`,
-			msg: `Commit successful.`,
-		});
-	  }
-
+    alert({
+      type: `error`,
+      name: `ERROR`,
+      msg: `Something went wrong. Please check the error message.`,
+    });
+    return;
+  } else {
+    alert({
+      type: `success`,
+      name: `SUCCESS`,
+      msg: `Commit successful.`,
+    });
+  }
 
   debug && log(flags);
 })();

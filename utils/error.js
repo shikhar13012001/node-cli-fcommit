@@ -12,4 +12,5 @@ const isSafe = ({ message }) => {
 
   return true;
 };
+
 module.exports = isSafe;
