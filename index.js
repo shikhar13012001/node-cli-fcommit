@@ -24,6 +24,10 @@ const { clear, debug } = flags;
   if (!isSafe({ message })) {
     return;
   }
+  
+
+
+
   console.log(`\nCommit message: ${flags.message}\n`);
   console.log(`\nBranch name: ${flags.branch}\n`);
   console.log(`\nCommitting...\n`);
@@ -40,6 +44,11 @@ const { clear, debug } = flags;
       alert({ type: `info`, name: `INFO`, msg: `Pushing to remote...` });
       return `git add . && git commit -m "${flags.message}" && git push origin ${flags.branch}`;
     }
+	  alert({
+      type: `info`,
+      name: `INFO`,
+      msg: `Committing changes ...`,
+    });
     return `git add . && git commit -m "${flags.message}"`;
   };
 
