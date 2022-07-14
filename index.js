@@ -26,7 +26,7 @@ const commit = require("./utils/commit");
     return;
   }
 
-  log({ msg: `\nCommit message: ${flags.message}\n`, type: `blue` });
+  log({ msg: `\nCommit message: ${flags.message}\n`, type: `magenta` });
   log({ msg: `\nBranch name: ${flags.branch}\n`, type: `yellow` });
   log({ msg: `\nCommitting...\n`, type: `blue` });
 
