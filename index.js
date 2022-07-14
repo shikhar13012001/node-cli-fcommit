@@ -40,6 +40,14 @@ const commit = require("./utils/commit");
 
   // run git add  command
   const add = require("child_process").execSync(commit(flags));
+  // handle unhandled promise rejections
+  process.on("unhandledRejection", (err) => {
+    alert({
+      type: `error`,
+      name: `ERROR`,
+      msg: `${err.message}`,
+    });
+  });
 
   // check if there is any error
   if (add.error) {
