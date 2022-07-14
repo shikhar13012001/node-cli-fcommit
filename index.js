@@ -32,7 +32,7 @@ const commit = require("./utils/commit");
 
   // run git add  command
   const add = require("child_process").execSync(commit(flags));
-   
+
   // check if there is any error
   if (add.error) {
     alert({
