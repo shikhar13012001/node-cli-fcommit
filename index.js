@@ -16,6 +16,7 @@ const input = cli.input;
 const flags = cli.flags;
 const { clear, debug } = flags;
 const commit = require("./utils/commit");
+
 (async () => {
   init({ clear });
   input.includes(`help`) && cli.showHelp(0);
@@ -25,13 +26,13 @@ const commit = require("./utils/commit");
     return;
   }
 
-  console.log(`\nCommit message: ${flags.message}\n`);
-  console.log(`\nBranch name: ${flags.branch}\n`);
-  console.log(`\nCommitting...\n`);
+  log({ msg: `\nCommit message: ${flags.message}\n`, type: `blue` });
+  log({ msg: `\nBranch name: ${flags.branch}\n`, type: `blue` });
+  log({ msg: `\nCommitting...\n`, type: `blue` });
 
   // run git add  command
   const add = require("child_process").execSync(commit(flags));
-  console.log(add.toString());
+   
   // check if there is any error
   if (add.error) {
     alert({
@@ -48,5 +49,5 @@ const commit = require("./utils/commit");
     });
   }
 
-  debug && log(flags);
+  debug && console.log(flags);
 })();
