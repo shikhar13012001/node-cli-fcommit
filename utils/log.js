@@ -3,5 +3,5 @@ const chalk = require("chalk");
 module.exports = (info) => {
  
   console.log(chalk[info.type](info.msg));
-  console.log();
+  
 };
