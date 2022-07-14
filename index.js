@@ -16,15 +16,15 @@ const input = cli.input;
 const flags = cli.flags;
 const { clear, debug } = flags;
 const commit = require("./utils/commit");
-  process.on("unhandledRejection", (err) => {
-    alert({
-      type: `error`,
-      name: `ERROR`,
-      msg: `${err.message}`,
-    });
-    // exit process
-    process.exit(1);
-  });
+//   process.on("unhandledRejection", (err) => {
+//     alert({
+//       type: `error`,
+//       name: `ERROR`,
+//       msg: `${err.message}`,
+//     });
+//     // exit process
+//     process.exit(1);
+//   });
 (async () => {
   init({ clear });
   input.includes(`help`) && cli.showHelp(0);
@@ -48,7 +48,11 @@ const commit = require("./utils/commit");
 
   // run git add  command
   const add = require("child_process").execSync(commit(flags));
-
+  // working tree is clean show proper message
+  if (add.toString().includes(`working tree clean`)) {
+	log({ msg: `\nNo changes to commit.\n`, type: `yellow` });
+	return;  
+} 
  
 
   // check if there is any error
