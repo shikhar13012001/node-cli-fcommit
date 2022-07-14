@@ -37,17 +37,18 @@ const commit = require("./utils/commit");
     type: flags.branch ? `green` : `yellow`,
   });
   log({ msg: `\nCommitting...\n`, type: `blue` });
-
-  // run git add  command
-  const add = require("child_process").execSync(commit(flags));
-  // handle unhandled promise rejections
   process.on("unhandledRejection", (err) => {
     alert({
       type: `error`,
       name: `ERROR`,
       msg: `${err.message}`,
     });
+    // exit process
+    process.exit(1);
   });
+  // run git add  command
+  const add = require("child_process").execSync(commit(flags));
+  // handle unhandled promise rejections
 
   // check if there is any error
   if (add.error) {
