@@ -56,7 +56,7 @@ const commit = require("./utils/commit");
     if (err.output.toString().includes("nothing to commit")) {
       alert({
         type: `warning`,
-        name: `warning`,
+        name: `WARNING`,
         msg: `${"Nothing to commit"}`,
       });
     }
