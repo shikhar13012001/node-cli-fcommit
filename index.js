@@ -16,15 +16,15 @@ const input = cli.input;
 const flags = cli.flags;
 const { clear, debug } = flags;
 const commit = require("./utils/commit");
-//   process.on("unhandledRejection", (err) => {
-//     alert({
-//       type: `error`,
-//       name: `ERROR`,
-//       msg: `${err.message}`,
-//     });
-//     // exit process
-//     process.exit(1);
-//   });
+  process.on("unhandledRejection", (err) => {
+    alert({
+      type: `error`,
+      name: `ERROR`,
+      msg: `${err.output.toString()}`,
+    });
+    // exit process
+    process.exit(1);
+  });
 (async () => {
   init({ clear });
   input.includes(`help`) && cli.showHelp(0);
