@@ -34,6 +34,16 @@ const flags = {
     alias: `b`,
     desc: `Branch name`,
   },
+  push: {
+    type: `boolean`,
+    alias: `p`,
+    desc: `Push to remote`,
+  },
+  upstream: {
+    type: `boolean`,
+    alias: `u`,
+    desc: `Push to upstream`,
+  },
 };
 
 const commands = {
@@ -43,6 +53,8 @@ const commands = {
   debug: { desc: `Print debug info` },
   message: { desc: `Commit message` },
   branch: { desc: `Branch name` },
+  push: { desc: `Push to remote` },
+  upstream: { desc: `Push to upstream` },
 };
 
 const helpText = meowHelp({
