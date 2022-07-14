@@ -1,5 +1,5 @@
 const alert = require("cli-alerts");
-const isSafe = ({ branch, message }) => {
+const isSafe = ({ message }) => {
   if (!message) {
     alert({
       type: `error`,
@@ -9,15 +9,7 @@ const isSafe = ({ branch, message }) => {
 
     return false;
   }
-  if (!branch) {
-    alert({
-      type: `error`,
-      name: `ERROR`,
-      msg: `Please provide branch name`,
-    });
 
-    return false;
-  }
   return true;
 };
 module.exports = isSafe;
