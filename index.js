@@ -23,19 +23,17 @@ const commit = require("./utils/commit");
   input.includes(`version`) && cli.showVersion(0);
   // get branch
   const currbranch = require("child_process").execSync(
-	`git branch | grep "*" | cut -d " " -f 2`
-  )
- console.log(currbranch.toString());
+    `git branch | grep "*" | cut -d " " -f 2`
+  );
 
   const { message, branch } = flags;
   if (!isSafe({ message })) {
     return;
   }
-  
 
   log({ msg: `\nCommit message: ${flags.message}\n`, type: `green` });
   log({
-    msg: `\nBranch name: ${flags.branch}\n`,
+    msg: `\nBranch name: ${flags.branch || currbranch.toString()}\n`,
     type: flags.branch ? `green` : `yellow`,
   });
   log({ msg: `\nCommitting...\n`, type: `blue` });
