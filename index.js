@@ -49,7 +49,7 @@ const commit = require("./utils/commit");
   // run git add  command
   const add = require("child_process").execSync(commit(flags));
   // if there is nothing to commit then exit process
-  console.log(add.toString());
+  console.log("output",add.toString());
 
   
  
