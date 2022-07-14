@@ -49,10 +49,7 @@ const commit = require("./utils/commit");
   // run git add  command
   const add = require("child_process").execSync(commit(flags));
   // working tree is clean show proper message
-  if (add.toString().includes(`working tree clean`)) {
-	log({ msg: `\nNo changes to commit.\n`, type: `yellow` });
-	return;  
-} 
+  
  
 
   // check if there is any error
