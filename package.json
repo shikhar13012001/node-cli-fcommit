@@ -1,10 +1,9 @@
 {
-  "name": "git-commit-helper",
+  "name": "fcommit",
   "description": "helps you commit your code in one line rather than three",
   "version": "1.0.0",
   "license": "MIT",
   "bin": {
-    "git-commit-helper": "index.js",
     "fcommit": "index.js"
   },
   "author": {
