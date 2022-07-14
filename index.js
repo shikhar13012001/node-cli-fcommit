@@ -10,8 +10,7 @@
 const init = require("./utils/init");
 const cli = require("./utils/cli");
 const log = require("./utils/log");
-
-const error = require("./utils/error");
+const alert = require("cli-alerts");
 const isSafe = require("./utils/error");
 const input = cli.input;
 const flags = cli.flags;
