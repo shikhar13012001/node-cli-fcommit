@@ -53,14 +53,22 @@ const commit = require("./utils/commit");
   try {
     const add = require("child_process").execSync(commit(flags));
   } catch (err) {
-    alert({
-      type: `error`,
-      name: `ERROR`,
-      msg: `${err.message}`,
+    if (err.output.toString().includes("nothing to commit")) {
+      alert({
+        type: `warning`,
+        name: `warning`,
+        msg: `${err.message}`,
+      });
+    }
+	else{
+		alert({
+		type: `error`,
+		name: `ERROR`,
+		msg: `${err.output.toString()}`,
+	  });
+	}
 
-    });
-	console.log(err.output.toString());
-	return;
+    return;
   }
 
   // check if there is any error
