@@ -26,8 +26,11 @@ const commit = require("./utils/commit");
     return;
   }
 
-  log({ msg: `\nCommit message: ${flags.message}\n`, type: `magenta` });
-  log({ msg: `\nBranch name: ${flags.branch}\n`, type: `yellow` });
+  log({ msg: `\nCommit message: ${flags.message}\n`, type: `green` });
+  log({
+    msg: `\nBranch name: ${flags.branch}\n`,
+    type: flags.branch ? `green` : `yellow`,
+  });
   log({ msg: `\nCommitting...\n`, type: `blue` });
 
   // run git add  command
