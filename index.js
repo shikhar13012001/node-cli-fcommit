@@ -49,15 +49,8 @@ const commit = require("./utils/commit");
   // run git add  command
   const add = require("child_process").execSync(commit(flags));
   // if there is nothing to commit then exit process
-  if (add.toString().includes(`nothing to commit`)) {
-	alert({
-		type: `error`,
-		name: `ERROR`,
-		msg: `Nothing to commit`,
-	});
-	process.exit(1);
-	  }
-	  
+  console.log(add);
+
   
  
 
