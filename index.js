@@ -16,20 +16,31 @@ const input = cli.input;
 const flags = cli.flags;
 const { clear, debug } = flags;
 const commit = require("./utils/commit");
-  process.on("unhandledRejection", (err) => {
-    alert({
-      type: `error`,
-      name: `ERROR`,
-      msg: `${err.output.toString()}`,
-    });
-    // exit process
-    process.exit(1);
+process.on("unhandledRejection", (err) => {
+  alert({
+    type: `error`,
+    name: `ERROR`,
+    msg: `${err.output.toString()}`,
   });
+  // exit process
+  process.exit(1);
+});
 (async () => {
   init({ clear });
   input.includes(`help`) && cli.showHelp(0);
   input.includes(`version`) && cli.showVersion(0);
   // get branch
+  // check if grep is available in the system
+  const grep = require("child_process").spawnSync("grep", ["--version"]);
+  if (grep.error) {
+    alert({
+      type: `error`,
+      name: `ERROR`,
+      msg: `Grep is not available in the system. Please install it. or use git bash to run this script.`,
+    });
+    process.exit(1);
+  }
+
   const currbranch = require("child_process").execSync(
     `git branch | grep "*" | cut -d " " -f 2`
   );
@@ -59,14 +70,13 @@ const commit = require("./utils/commit");
         name: `WARNING`,
         msg: `${"Nothing to commit"}`,
       });
+    } else {
+      alert({
+        type: `error`,
+        name: `ERROR`,
+        msg: `${err.output.toString()}`,
+      });
     }
-	else{
-		alert({
-		type: `error`,
-		name: `ERROR`,
-		msg: `${err.output.toString()}`,
-	  });
-	}
 
     return;
   }
