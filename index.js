@@ -47,12 +47,18 @@ const commit = require("./utils/commit");
   log({ msg: `\nCommitting...\n`, type: `blue` });
 
   // run git add  command
-  const add = require("child_process").execSync(commit(flags));
-  // if there is nothing to commit then exit process
-  console.log("output",add.toString());
+  //   const add = require("child_process").execSync(commit(flags));
 
-  
- 
+  // run git commit command if there is nothing to commit then exit with a message
+  try {
+    const add = require("child_process").execSync(commit(flags));
+  } catch (err) {
+    alert({
+      type: `error`,
+      name: `ERROR`,
+      msg: `${err.message}`,
+    });
+  }
 
   // check if there is any error
   if (add.error) {
