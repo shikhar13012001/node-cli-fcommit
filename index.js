@@ -61,20 +61,12 @@ const commit = require("./utils/commit");
   }
 
   // check if there is any error
-  if (add.error) {
-    alert({
-      type: `error`,
-      name: `ERROR`,
-      msg: `Something went wrong. Please check the error message.`,
-    });
-    return;
-  } else {
-    alert({
-      type: `success`,
-      name: `SUCCESS`,
-      msg: `Commit successful.`,
-    });
-  }
+
+  alert({
+    type: `success`,
+    name: `SUCCESS`,
+    msg: `Commit successful.`,
+  });
 
   debug && console.log(flags);
 })();
