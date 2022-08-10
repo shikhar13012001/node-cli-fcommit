@@ -44,6 +44,11 @@ const flags = {
     alias: `u`,
     desc: `Push to upstream`,
   },
+  empty: {
+    type: `boolean`,
+    alias: `e`,
+    desc: `Create empty commit`
+  }
 };
 
 const commands = {
@@ -55,6 +60,7 @@ const commands = {
   branch: { desc: `Branch name` },
   push: { desc: `Push to remote` },
   upstream: { desc: `Push to upstream` },
+  empty: {desc: `Allow empty commit`}
 };
 
 const helpText = meowHelp({

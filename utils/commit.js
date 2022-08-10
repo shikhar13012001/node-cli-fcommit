@@ -1,23 +1,25 @@
 const alert = require("cli-alerts");
- const commit = (flags) => {
-   if (flags.push) {
-     if (flags.upstream) {
-       alert({
-         type: `info`,
-         name: `INFO`,
-         msg: `Pushing upstream to remote...`,
-       });
-       return `git add . && git commit -m "${flags.message}" && git push -u origin ${flags.branch}`;
-     }
-     alert({ type: `info`, name: `INFO`, msg: `Pushing to remote...` });
-     return `git add . && git commit -m "${flags.message}" && git push origin ${flags.branch}`;
-   }
-   alert({
-     type: `info`,
-     name: `INFO`,
-     msg: `Committing changes ...`,
-   });
-   return `git add . && git commit -m "${flags.message}"`;
- };
 
- module.exports = commit;
+const commit = (flags) => {
+  let commands = [`git add .`];
+
+  if (flags.empty) {
+    commands.push(`git commit --allow-empty -m "${flags.message}"`);
+  } else {
+    commands.push(`git commit -m "${flags.message}"`);
+  }
+
+  if (flags.push && flags.upstream) {
+    alert({ type: `info`, name: `INFO`, msg: `Pushing upstream to remote...` });
+    commands.push(`git push -u origin ${flags.branch}`);
+  } else if (flags.push) {
+    alert({ type: `info`, name: `INFO`, msg: `Pushing to remote...` });
+    commands.push(`git push origin ${flags.branch}`);
+  }
+
+  let command = commands.join(" && ");
+
+  return command;
+};
+
+module.exports = commit;
