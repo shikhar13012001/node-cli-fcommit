@@ -12,6 +12,7 @@ const cli = require("./utils/cli");
 const log = require("./utils/log");
 const alert = require("cli-alerts");
 const isSafe = require("./utils/error");
+const TableView = require("./utils/table");
 const input = cli.input;
 const flags = cli.flags;
 const { clear, debug } = flags;
@@ -55,19 +56,25 @@ process.on("unhandledRejection", (err) => {
 
   try {
     const add = require("child_process").execSync(commit(flags));
-    log({ msg: `\n${add.toString()}\n`, type: `green` });
+    // if log is true then print log of commits in table format
+    if (flags.log) {
+    TableView(add.toString());
+    }
   } catch (err) {
-    if (err.output.toString().includes("nothing to commit")) {
+    console.log(err);
+    if (err.output?.toString()?.includes("nothing to commit")) {
       alert({
         type: `warning`,
         name: `WARNING`,
         msg: `${"Nothing to commit"}`,
       });
     } else {
+      // remove leading commas from message
+
       alert({
         type: `error`,
         name: `ERROR`,
-        msg: `${err.output.toString()}`,
+        msg: `${err.output?.toString()}`,
       });
     }
 

@@ -20,7 +20,7 @@ const commit = (flags) => {
   }
   if(flags.log){
     alert({ type: `info`, name: `INFO`, msg: `Printing log of commits in table format...` });
-    commands.push(`git log --pretty=oneline -10`);
+    commands.push(`git log --pretty=format:"%C(magenta) %h %C(cyan)%C(bold)%ad%Creset %<(23) %C(cyan)%cr%Creset %s%C(green)%Creset" --date=short`);
   }
 
   let command = commands.join(" && ");
