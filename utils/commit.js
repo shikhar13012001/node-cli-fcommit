@@ -4,8 +4,10 @@ const commit = (flags) => {
   let commands = [`git add .`];
 
   if (flags.empty) {
+    alert({ type: `info`, name: `INFO`, msg: `Creating empty commit ...` });
     commands.push(`git commit --allow-empty -m "${flags.message}"`);
   } else {
+    alert({ type: `info`, name: `INFO`, msg: `Committing changes ...` });
     commands.push(`git commit -m "${flags.message}"`);
   }
 
