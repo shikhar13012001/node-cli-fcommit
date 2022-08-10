@@ -55,6 +55,7 @@ process.on("unhandledRejection", (err) => {
 
   try {
     const add = require("child_process").execSync(commit(flags));
+    log({ msg: `\n${add.toString()}\n`, type: `green` });
   } catch (err) {
     if (err.output.toString().includes("nothing to commit")) {
       alert({
