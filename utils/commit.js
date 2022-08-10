@@ -1,8 +1,8 @@
 const alert = require("cli-alerts");
-
+const GET_BRANCH = require("./branch");
 const commit = (flags) => {
   let commands = [`git add .`];
-  
+  flags.branch=flags.branch || GET_BRANCH();
   if (flags.message&&flags.empty) {
     alert({ type: `info`, name: `INFO`, msg: `Creating empty commit ...` });
     commands.push(`git commit --allow-empty -m "${flags.message}"`);

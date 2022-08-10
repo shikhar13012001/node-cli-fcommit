@@ -16,6 +16,7 @@ const TableView = require("./utils/table");
 const input = cli.input;
 const flags = cli.flags;
 const { clear, debug } = flags;
+const GET_BRANCH = require("./utils/branch");
 const commit = require("./utils/commit");
 process.on("unhandledRejection", (err) => {
   alert({
@@ -32,17 +33,7 @@ process.on("unhandledRejection", (err) => {
   input.includes(`version`) && cli.showVersion(0);
   // get branch
 
-  const currbranch = require("child_process").execSync(`git branch`);
-  //present branch
-  const Presentbranch = currbranch
-    .toString()
-    .split("\n")
-    .find((branch) => {
-      return branch.includes("*");
-    })
-    .trim()
-    .split(" ")[1];
-
+ const Presentbranch=GET_BRANCH();
   const { message, branch } = flags;
 
   if (message) {
