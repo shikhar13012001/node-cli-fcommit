@@ -48,6 +48,11 @@ const flags = {
     type: `boolean`,
     alias: `e`,
     desc: `Create empty commit`
+  },
+  log:{
+    type: `boolean`,
+    alias: `l`,
+    desc: `Print log of commits in table format`
   }
 };
 
@@ -60,7 +65,8 @@ const commands = {
   branch: { desc: `Branch name` },
   push: { desc: `Push to remote` },
   upstream: { desc: `Push to upstream` },
-  empty: {desc: `Allow empty commit`}
+  empty: {desc: `Allow empty commit`},
+  log: {desc: `Print log of commits in table format`}
 };
 
 const helpText = meowHelp({

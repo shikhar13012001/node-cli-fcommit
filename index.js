@@ -42,25 +42,24 @@ process.on("unhandledRejection", (err) => {
   }
 
   const currbranch = require("child_process").execSync(
-    `git branch | grep "*" | cut -d " " -f 2`
+    `git branch`
   );
+  const Presentbranch = currbranch.toString().split("\n").find((branch) => {
+    return branch.includes("*");
+  }).trim().split(" ")[1];
+
 
   const { message, branch } = flags;
-  if (!isSafe({ message })) {
-    return;
+
+  if (message) {
+    log({ msg: `\nCommit message: ${flags.message}\n`, type: `green` });
+    log({
+      msg: `\nBranch name: ${flags.branch || Presentbranch.toString()}\n`,
+      type: flags.branch ? `green` : `yellow`,
+    });
+    log({ msg: `\nCommitting...\n`, type: `blue` });
   }
 
-  log({ msg: `\nCommit message: ${flags.message}\n`, type: `green` });
-  log({
-    msg: `\nBranch name: ${flags.branch || currbranch.toString()}\n`,
-    type: flags.branch ? `green` : `yellow`,
-  });
-  log({ msg: `\nCommitting...\n`, type: `blue` });
-
-  // run git add  command
-  //   const add = require("child_process").execSync(commit(flags));
-
-  // run git commit command if there is nothing to commit then exit with a message
   try {
     const add = require("child_process").execSync(commit(flags));
   } catch (err) {
