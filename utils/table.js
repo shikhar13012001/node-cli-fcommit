@@ -1,11 +1,12 @@
 const Table = require("cli-table");
+const chalk = require("chalk");
 
 const TableView = (add) => {
   // print logs using cli-table
   var table = new Table({
     head: ["COMMIT HASH", "DATE", "TIME", "MESSAGE"],
     colWidths: [15, 15, 20, 50],
-    
+
     style: {
       head: ["yellow", "bold", "cyan", "green", "bold"],
       border: ["cyan"],
@@ -33,10 +34,12 @@ const TableView = (add) => {
     var messageSplit = splits.slice(5).join(" ");
     // remove from index 2 to end of array
     splits.splice(2);
+    splits[0]=chalk.cyan(splits[0]);
+    splits[1] = chalk.cyan(splits[0]);
     // push date and time to array
-    splits.push(dateTime);
+    splits.push(chalk.yellow(dateTime));
     // push message to array
-    splits.push(messageSplit);
+    splits.push(chalk.hex("#7dd076").bold(messageSplit));
     // push array to table
     table.push(splits);
   }
