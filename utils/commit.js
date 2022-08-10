@@ -24,7 +24,6 @@ const commit = (flags) => {
   }
 
   let command = commands.join(" && ");
- console.log(command);
   return command;
 };
 

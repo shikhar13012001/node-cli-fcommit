@@ -30,24 +30,17 @@ process.on("unhandledRejection", (err) => {
   input.includes(`help`) && cli.showHelp(0);
   input.includes(`version`) && cli.showVersion(0);
   // get branch
-  // check if grep is available in the system
-  const grep = require("child_process").spawnSync("grep", ["--version"]);
-  if (grep.error) {
-    alert({
-      type: `error`,
-      name: `ERROR`,
-      msg: `Grep is not available in the system. Please install it. or use git bash to run this script.`,
-    });
-    process.exit(1);
-  }
 
-  const currbranch = require("child_process").execSync(
-    `git branch`
-  );
-  const Presentbranch = currbranch.toString().split("\n").find((branch) => {
-    return branch.includes("*");
-  }).trim().split(" ")[1];
-
+  const currbranch = require("child_process").execSync(`git branch`);
+  //present branch
+  const Presentbranch = currbranch
+    .toString()
+    .split("\n")
+    .find((branch) => {
+      return branch.includes("*");
+    })
+    .trim()
+    .split(" ")[1];
 
   const { message, branch } = flags;
 
