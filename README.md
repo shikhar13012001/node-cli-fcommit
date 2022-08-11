@@ -1,7 +1,13 @@
+<h3 align="center">
+<img src="./assets/logo.png">
+</h3>
+
 ## fcommit
 
 A basic cli tool for git commit and push.
 Note this project is educational purpose to learn how cli tools work.
+
+![npm](https://img.shields.io/npm/v/fcommit?style=for-the-badge) ![downloads](https://img.shields.io/npm/dw/fcommit?style=for-the-badge) ![stars](https://img.shields.io/github/stars/shikhar13012001/node-cli-fcommit?style=social&label=stars)
 
 ## Installation
 
@@ -30,10 +36,8 @@ use the following command to get help:
 ```bash
     $ fcommit --help
 ```
+
 ![help](./assets/help.png)
-
-
-
 
 A basic commit command:
 
@@ -71,5 +75,4 @@ $ fcommit -m "message" -p -u -b main
   $ fcommit --log
   $ fcommit -l
   ```
-![logs](./assets/logs.png)
-
+  ![logs](./assets/logs.png)
