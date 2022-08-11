@@ -53,6 +53,12 @@ const flags = {
     type: `boolean`,
     alias: `l`,
     desc: `Print log of commits in table format`
+  },
+  force:{
+    type: `boolean`,
+    alias: `f`,
+    desc: `Force push to remote`
+
   }
 };
 
@@ -66,7 +72,8 @@ const commands = {
   push: { desc: `Push to remote` },
   upstream: { desc: `Push to upstream` },
   empty: {desc: `Allow empty commit`},
-  log: {desc: `Print log of commits in table format`}
+  log: {desc: `Print log of commits in table format`},
+  force: {desc: `Force push to remote`}
 };
 
 const helpText = meowHelp({

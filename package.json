@@ -1,7 +1,7 @@
 {
   "name": "fcommit",
   "description": "helps you commit your code in one line rather than three",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "license": "MIT",
   "bin": {
     "fcommit": "index.js"
@@ -13,14 +13,19 @@
   },
   "keywords": [
     "git-commit-helper",
-    "shikhar13012001"
+    "shikhar13012001",
+    "fast commit ",
+    "fcommit",
+    "fct"
   ],
   "files": [
     "index.js",
     "utils"
   ],
   "scripts": {
-    "format": "prettier --write \"./**/*.{js,json}\""
+    "format": "prettier --write \"./**/*.{js,json}\"",
+    "deploy":"np",
+    "test": "echo \"No test specified\""
   },
   "dependencies": {
     "chalk": "^4.1.2",
