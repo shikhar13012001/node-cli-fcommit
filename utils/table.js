@@ -35,7 +35,7 @@ const TableView = (add) => {
     // remove from index 2 to end of array
     splits.splice(2);
     splits[0]=chalk.cyan(splits[0]);
-    splits[1] = chalk.cyan(splits[0]);
+    splits[1] = chalk.cyan(splits[1]);
     // push date and time to array
     splits.push(chalk.yellow(dateTime));
     // push message to array

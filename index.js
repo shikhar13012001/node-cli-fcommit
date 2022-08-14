@@ -51,7 +51,7 @@ process.on("unhandledRejection", (err) => {
     TableView(add.toString());
     }
   } catch (err) {
-    console.log(err);
+ 
     if (err.output?.toString()?.includes("nothing to commit")) {
       alert({
         type: `warning`,
