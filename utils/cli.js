@@ -59,7 +59,12 @@ const flags = {
     alias: `f`,
     desc: `Force push to remote`
 
-  }
+  },
+  mkignore: {
+    type: `boolean`,
+    alias: `i`,
+    desc: `Create .gitignore file`
+  },
 };
 
 const commands = {
@@ -73,7 +78,8 @@ const commands = {
   upstream: { desc: `Push to upstream` },
   empty: {desc: `Allow empty commit`},
   log: {desc: `Print log of commits in table format`},
-  force: {desc: `Force push to remote`}
+  force: {desc: `Force push to remote`},
+  mkignore: {desc: `Create .gitignore file basic template`},
 };
 
 const helpText = meowHelp({

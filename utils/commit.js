@@ -1,8 +1,33 @@
 const alert = require("cli-alerts");
 const GET_BRANCH = require("./branch");
+const fs = require("fs");
 const commit = (flags) => {
   let commands = [`git add .`];
   flags.branch = flags.branch || GET_BRANCH();
+
+  // create .gitignore file if it doesn't exist
+  if (flags.mkignore) {
+    if (!fs.existsSync(".gitignore")) {
+      alert({
+        type: `info`,
+        name: `INFO`,
+        msg: `Creating .gitignore file`,
+      });
+
+      const template = fs.readFileSync(
+        `${__dirname}/../templates/.node.gitignore`,
+        "utf8"
+      );
+      fs.writeFileSync(".gitignore", template);
+    }
+  } else {
+    alert({
+      type: `info`,
+      name: `INFO`,
+      msg: `Not Creating .gitignore file as it already exists`,
+    });
+  }
+
   if (flags.message && flags.empty) {
     alert({ type: `info`, name: `INFO`, msg: `Creating empty commit ...` });
     commands.push(`git commit --allow-empty -m "${flags.message}"`);

@@ -28,6 +28,7 @@
     "test": "echo \"No test specified\""
   },
   "dependencies": {
+    "axios": "^0.27.2",
     "chalk": "^4.1.2",
     "cli-alerts": "^1.2.2",
     "cli-handle-error": "^4.4.0",
@@ -35,6 +36,7 @@
     "cli-meow-help": "^3.1.0",
     "cli-table": "^0.3.11",
     "cli-welcome": "^2.2.2",
+    "inquirer": "^9.1.1",
     "meow": "^9.0.0"
   },
   "devDependencies": {

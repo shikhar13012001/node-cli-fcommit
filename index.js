@@ -18,10 +18,11 @@ const { clear, debug } = flags;
 const GET_BRANCH = require("./utils/branch");
 const commit = require("./utils/commit");
 process.on("unhandledRejection", (err) => {
+   
   alert({
     type: `error`,
     name: `ERROR`,
-    msg: `${err.output.toString()}`,
+    msg: `${err.output}`,
   });
   // exit process
   process.exit(1);
