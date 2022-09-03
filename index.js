@@ -80,5 +80,5 @@ process.on("unhandledRejection", (err) => {
     msg: `Commit successful.`,
   });
 
-  debug && console.log(flags);
+  debug && {}
 })();

@@ -44,6 +44,6 @@ const TableView = (add) => {
     table.push(splits);
   }
 
-  console.log(table.toString());
+  
 };
 module.exports = TableView;
