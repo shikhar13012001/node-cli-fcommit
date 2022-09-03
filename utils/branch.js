@@ -3,7 +3,7 @@ const GET_BRANCH=()=>{
      //present branch
      const Presentbranch = currbranch
        .toString()
-       .split("\n")
+        .split("\n")
        .find((branch) => {
          return branch.includes("*");
        })
